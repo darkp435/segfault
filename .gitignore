@@ -1,0 +1,4 @@
+*.exe
+.vscode
+# In case anybody actually ran the code here
+bruh.txt
