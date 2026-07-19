@@ -12,13 +12,15 @@ Nobody wants that file on their disk. Nobody wants to get shamed, either, for ge
 Therefore, with that in your mind, you should begin to write less segmentation faults psychologically. Because, after all, *fear* is the best motivation.
 
 # How do I use it?
-I'm glad you asked! This is a C header-only "library" (if you could call it that) which means at the moment using it in C and C++ are the main deals. You can find it under GitHub releases (or, if for some reason it's not there, as segfault_preventor.h in the root directory of this project). Simply `#include` it, and put
+I'm glad you asked! This is a C header-only "library" (if you could call it that) which means at the moment using it in C and C++ are the only ways I support using it. You can find the header under GitHub releases (or, if for some reason it's not there, as segfault_preventor.h in the root directory of this project). Simply `#include` it, and put
 ```c
 prevent_segfaults()
 ```
 at the first line of the `main` function.
 
 Congratulations! You're now utilizing *fear* to help you become a 10x developer!
+
+There's also a sample program `sample.c` located in the root directory of this project if you want to test it without using it on, idk, "c00lgui.c" or something.
 
 ## FAQ
 **Q:** Does this actually work?
