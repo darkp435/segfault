@@ -1,3 +1,4 @@
+<small>please dont actually use this in a real proj btw thx</small>
 # Segfault Preventer
 We've all made the classic mistake of dereferencing a null pointer, crashing the program. I've done it, my friends done it, heck, even my dog has done it before. Those who experienced this know that you have to go through character development to find that pesky line where you forgot to check if the pointer is null.
 
