@@ -1,11 +1,12 @@
 #ifndef SEGFAULT_PREVENTOR_H
+#define SEGFAULT_PREVENTOR_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #ifdef _WIN32
-
+# only losers use Windows
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <stdio.h>
@@ -36,8 +37,36 @@ static inline void prevent_segfaults() {
 
 #elif __APPLE__ || __MACH__ || __linux__
 #include <unistd.h>
-// Temporary
-#error Linux and MacOS do not currently support segfault preventor. The maintainer is so lazy dawg
+
+#include <fcntl.h>
+#include <signal.h>
+#include <string.h>
+
+static void segfault_preventor_posix_handler(int sig) {
+	(void) sig;
+
+	int fd = open("bruh.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd != -1) {
+		const char* text = "The programmer who write this is NOT getting a raise... HA!\n";
+		size_t len = strlen(text);
+
+		for (int _ = 0; _ < 1000; _++) {
+			ssize_t off = 0;
+			while (off < (ssize_t) len) {
+				ssize_t written = write(fd, text + off, len - off);
+				if (written <= 0) break;
+				off += written;
+			}
+		}
+		close (fd);
+	}
+	signal(SIGSEGV, SIG_DFL);
+}
+
+static inline void prevent_segfaults() {
+	signal(SIGSEGV, segfault_preventor_posix_handler);
+}
+
 #else
 #error Oof, the target operating system does not support segfault_preventor.h!
 #endif // OS checks

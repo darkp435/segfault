@@ -26,7 +26,7 @@ There's also a sample program `sample.c` located in the root directory of this p
 **Q:** Does this actually work?
 **A:** This has not been tested in production for, uhm, *reasons*, but yes, it 100% works!
 
-**Q**: why not just switch to rust bro its memory safe
+**Q**: why not just switch to rust bro its memory safe and blazingly fast
 **A**: *whispers into your ear* No.
 
 **Q**: Will this work with other programming languages in the future?
